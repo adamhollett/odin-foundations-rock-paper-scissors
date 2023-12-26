@@ -4,7 +4,9 @@ const GAMES_PER_ROUND = 5;
 const results = [];
 const score = { player: 0, computer: 0 };
 
-const sample = (array) => array[Math.floor(Math.random() * array.length)];
+function sample(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
 
 function getPlayerChoice() {
   const choice = prompt("Choose rock, paper, or scissors!").toLowerCase();
@@ -60,14 +62,13 @@ function playRound(playerChoice = getPlayerChoice(), computerChoice = getCompute
         case "scissors": return handleTie();
       }
   }
-
 }
 
 function game() {
-  for (let i = 0; i < GAMES_PER_ROUND; i++) {
+  for (let i = 1; i <= GAMES_PER_ROUND; i++) {
     console.info(`Game ${i}:`);
     playRound();
-    console.info(`Results so far: Player: ${score.player} / Computer: ${score.computer}`);
+    console.info(`Results so far: Player ${score.player} / Computer ${score.computer}`);
     console.log("\n");
   }
 
