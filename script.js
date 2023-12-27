@@ -1,7 +1,6 @@
 const CHOICES = ["rock", "paper", "scissors"];
 const GAMES_PER_ROUND = 5;
 
-const results = [];
 const score = { player: 0, computer: 0 };
 
 function sample(array) {
@@ -28,34 +27,36 @@ function getComputerChoice() {
 
 function handleTie() {
   console.info("Round is a tie!");
-  updateResultDisplay("Draw");
+
+  flashUpdate(resultDisplay, "Draw", 200);
 }
 
 function handlePlayerWin() {
   score.player++;
 
   console.info(`Player wins the round and has ${score.player} point(s).`);
-  updateResultDisplay("Player wins");
-  updateScoreDisplay(playerScoreDisplay, score.player)
+
+  flashUpdate(playerScoreDisplay, score.player, 200);
+  flashUpdate(resultDisplay, "Player wins", 200);
 }
 
 function handlePlayerLoss() {
   score.computer++;
 
   console.info(`Computer wins the round and has ${score.computer} point(s).`);
-  updateResultDisplay("Computer wins");
-  updateScoreDisplay(computerScoreDisplay, score.computer)
+
+  flashUpdate(computerScoreDisplay, score.computer, 200);
+  flashUpdate(resultDisplay, "Computer wins", 200);
 }
 
-function updateResultDisplay(message) {
-  resultDisplay.innerHTML = "";
-  setTimeout(() => { resultDisplay.innerHTML = message }, 150);
-  setTimeout(() => { resultDisplay.innerHTML = "" }, 2000);
-}
+function flashUpdate(element, value, duration) {
+  element.classList.add("hidden");
 
-function updateScoreDisplay(element, newScore) {
-  element.innerHTML = ""
-  setTimeout(() => { element.innerHTML = newScore }, 150);
+  setTimeout(() => {
+    element.innerHTML = value
+    element.classList.remove("hidden");
+    element.classList.add("visible");
+  }, duration);
 }
 
 function playRound(playerChoice = getPlayerChoice(), computerChoice = getComputerChoice()) {
