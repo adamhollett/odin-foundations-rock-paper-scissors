@@ -1,0 +1,84 @@
+:root {
+  --font-size: 4rem;
+  --line-height: 1.6;
+  --space: calc(var(--font-size) * (var(--line-height)));
+
+  --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+}
+
+html {
+  font-family: var(--font-serif);
+  font-size: 62.5%;
+  font-style: italic;
+  line-height: 1.6;
+  color: hsl(0, 0%, 98%);
+  background-color: hsl(235, 40%, 30%);
+  box-sizing: border-box;
+}
+
+body {
+  margin: var(--space);
+  font-size: var(--font-size);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.choices {
+  display: flex;
+  gap: var(--space);
+  text-align: center;
+}
+
+.choices button {
+  flex: 1;
+  border: 3px solid hsla(0, 0%, 50%, 0.1);
+  border-radius: 100%;
+  background: none;
+  color: hsl(0, 0%, 98%);
+  box-shadow: 0px 1px 1px #111;
+  font-size: var(--font-size);
+  font-family: var(--font-serif);
+  font-style: italic;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: all ease-in-out 150ms;
+}
+
+.choices button:hover {
+  border-color: hsla(0, 0%, 98%, 0.9);
+  box-shadow: 0px 4px 8px #111;
+  transform: translateY(-4px);
+}
+
+.choices button:active {
+  box-shadow: 0px 0px 0px #111;
+  transform: translateY(2px);
+  transition: all ease-in-out 50ms;
+}
+
+.result {
+  margin: var(--space);
+  text-align: center;
+}
+
+.scores {
+  display: flex;
+  margin: var(--space) 0;
+}
+
+.scores .player {
+  flex: 1;
+  text-align: left;
+}
+
+.scores .computer {
+  flex: 1;
+  text-align: right;
+}
+
+.scores div {
+  flex: 1;
+}

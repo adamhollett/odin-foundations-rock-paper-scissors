@@ -5,10 +5,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
 
+  <link rel="stylesheet" href="style.css" />
+
   <title>Rock, Paper, Scissors</title>
 </head>
 
 <body>
+  <div class="container">
+    <div class="choices">
+      <button id="rock" class="rock">rock</button>
+      <button id="paper" class="paper">paper</button>
+      <button id= "scissors" class="scissors">scissors</button>
+    </div>
+
+    <div id="result" class="result">
+    </div>
+
+    <div class="scores">
+      <div class="player">
+        player: <span id="player-score">0</span>
+      </div>
+
+      <div class="computer">
+        computer: <span id="computer-score">0</span>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 

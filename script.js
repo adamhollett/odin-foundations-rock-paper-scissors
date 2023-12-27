@@ -8,6 +8,10 @@ function sample(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
+const resultDisplay        = document.querySelector("#result");
+const playerScoreDisplay   = document.querySelector("#player-score");
+const computerScoreDisplay = document.querySelector("#computer-score");
+
 function getPlayerChoice() {
   const choice = prompt("Choose rock, paper, or scissors!").toLowerCase();
   console.info(`Player chose: ${choice}`);
@@ -24,16 +28,34 @@ function getComputerChoice() {
 
 function handleTie() {
   console.info("Round is a tie!");
+  updateResultDisplay("Draw");
 }
 
 function handlePlayerWin() {
-  console.info("Player wins the round!");
-  return score.player++;
+  score.player++;
+
+  console.info(`Player wins the round and has ${score.player} point(s).`);
+  updateResultDisplay("Player wins");
+  updateScoreDisplay(playerScoreDisplay, score.player)
 }
 
 function handlePlayerLoss() {
-  console.info("Computer wins the round!");
-  return score.computer++;
+  score.computer++;
+
+  console.info(`Computer wins the round and has ${score.computer} point(s).`);
+  updateResultDisplay("Computer wins");
+  updateScoreDisplay(computerScoreDisplay, score.computer)
+}
+
+function updateResultDisplay(message) {
+  resultDisplay.innerHTML = "";
+  setTimeout(() => { resultDisplay.innerHTML = message }, 150);
+  setTimeout(() => { resultDisplay.innerHTML = "" }, 2000);
+}
+
+function updateScoreDisplay(element, newScore) {
+  element.innerHTML = ""
+  setTimeout(() => { element.innerHTML = newScore }, 150);
 }
 
 function playRound(playerChoice = getPlayerChoice(), computerChoice = getComputerChoice()) {
@@ -85,4 +107,11 @@ function game() {
   }
 }
 
-game();
+const rockButton = document.querySelector("#rock");
+rockButton.addEventListener("click", () => playRound("rock"));
+
+const paperButton = document.querySelector("#paper");
+paperButton.addEventListener("click", () => playRound("paper"));
+
+const scissorsButton = document.querySelector("#scissors");
+scissorsButton.addEventListener("click", () => playRound("scissors"));
